@@ -1,7 +1,7 @@
 -- Benchmark for the partial evaluator:
 -- Knuth/Morris/Pratt pattern matcher
 
-import Profile
+import Debug.Profile
 
 data Letter = A | B
 
