@@ -16,7 +16,7 @@ import Flat2Fcy
 import Unsafe   ( trace )
 import System
 
-import System.CurryPath ( inCurrySubdir )
+import System.CurryPath ( inCurrySubdir, stripCurrySuffix )
 
 ------------------------------------------------------------------------------
 -- some global definitions:
@@ -134,15 +134,9 @@ main :: IO ()
 main = do
   args <- getArgs
   if length args /= 1
-   then putStrLn $ "ERROR: Illegal arguments: " ++
-                   concat (intersperse " " args) ++ "\n" ++
+   then putStrLn $ "ERROR: Illegal arguments: " ++ unwords args ++ "\n" ++
                    "Usage: peval.state <module_name>"
    else mainProg (stripCurrySuffix (head args))
-
-stripCurrySuffix :: String -> String
-stripCurrySuffix n = let rn = reverse n in
-  if take 6 rn == "yrruc." then reverse (drop 6 rn) else
-  if take 7 rn == "yrrucl." then reverse (drop 7 rn) else n
 
 
 -- Execute peval with the name of a program.
