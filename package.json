@@ -1,18 +1,18 @@
 {
     "name": "peval-noshare",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "Michael Hanus <mh@informatik.uni-kiel.de>, Elvira Albert, German Vidal (UPV)",
     "synopsis": "A partial evaluator for Curry (without sharing)",
     "category": [ "Analysis", "Optimization" ],
     "licenseFile": "LICENSE",
     "dependencies": {
-        "base"          : ">= 1.0.0, < 2.0.0",
+        "base"          : ">= 1.1.0, < 2.0.0",
         "currypath"     : ">= 0.0.1",
         "frontend-exec" : ">= 0.0.1",
         "profiling"     : ">= 0.0.1"
     },
     "compilerCompatibility": {
-        "pakcs": ">= 2.0.0, < 2.2.1",
+        "pakcs": "> 2.2.0, < 3.0.0",
         "kics2": ">= 2.0.0, < 3.0.0"
     },
     "executable": {
