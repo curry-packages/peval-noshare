@@ -3,10 +3,6 @@
 % Implementation of readFlatCurryFile of module Flat
 % (reading FlatCurry programs):
 
-%:- (current_module(prologbasics) -> true ; use_module('../prologbasics')).
-%:- (current_module(basics)       -> true ; use_module('../basics')).
-%:- (current_module(prim_readshowterm) -> true ; use_module(prim_readshowterm)). % for term en/decoding
-
 :- (swi7orHigher -> set_prolog_flag(double_quotes, codes) ; true).
 
 'Flat.prim_readFlatCurryFile'(FileString,FlatProg) :-
@@ -23,8 +19,8 @@ readFlatProg(ProgFile,FlatProg) :-
 	    getRunTime(RT1) ; true),
 	open(ProgFile,read,Stream),
 	readStreamContents(Stream,FcyPrologString), !,
-	readTerm(FcyPrologString,unchecked,Tail,Term),
-	skipWhiteSpace(Tail,[]),
+	readShowTerm:readTerm(FcyPrologString,unchecked,Tail,Term),
+	readShowTerm:skipWhiteSpace(Tail,[]),
 	(verbosityIntermediate
 	 -> getRunTime(RT2),
 	    RT is RT2-RT1,
